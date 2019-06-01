@@ -39,8 +39,8 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text='您說的是: '+ event.message.text)
-        TextSendMessage(text='這是我的名片: '+ event.message.text)
+        TextSendMessage(text='您說的是: ', event.message.text)
+        TextSendMessage(text='這是我的名片: ', event.message.text)
     )
 
 

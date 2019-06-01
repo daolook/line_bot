@@ -42,7 +42,7 @@ def handle_message(event):
         TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
-        thumbnail_image_url='https://example.com/image.jpg',
+        thumbnail_image_url='/img/001.jpg',
         title='Menu',
         text='Please select',
         actions=[
@@ -57,8 +57,7 @@ def handle_message(event):
             ),
             URIAction(
                 label='uri',
-                uri='http://oinzen.com/'
-            )
+                uri='line://app/1580205337-BLK0ZLky')
         ]
     )
 )

@@ -39,12 +39,29 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        LocationSendMessage(
-        title='my location',
-        address='Tokyo',
-        latitude=25.1145117,
-        longitude=121.5159515
-    ))
+        TemplateSendMessage(
+    alt_text='Buttons template',
+    template=ButtonsTemplate(
+        thumbnail_image_url='https://example.com/image.jpg',
+        title='Menu',
+        text='Please select',
+        actions=[
+            PostbackAction(
+                label='postback',
+                text='postback text',
+                data='action=buy&itemid=1'
+            ),
+            MessageAction(
+                label='message',
+                text='message text'
+            ),
+            URIAction(
+                label='uri',
+                uri='http://oinzen.com/'
+            )
+        ]
+    )
+)
 
 
 if __name__ == "__main__":

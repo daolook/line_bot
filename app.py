@@ -41,10 +41,10 @@ def handle_message(event):
         event.reply_token,
         TemplateSendMessage(
     alt_text='Buttons template',
-    template=ButtonsTemplate(
-        thumbnail_image_url='/img/001.jpg',
-        title='Menu',
-        text='Please select',
+    template=TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='Are you sure?',
         actions=[
             PostbackAction(
                 label='postback',
@@ -54,10 +54,7 @@ def handle_message(event):
             MessageAction(
                 label='message',
                 text='message text'
-            ),
-            URIAction(
-                label='uri',
-                uri='line://app/1580205337-BLK0ZLky')
+            )
         ]
     )
 )

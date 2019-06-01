@@ -43,6 +43,7 @@ def handle_message(event):
             package_id='1',
             sticker_id='1'
         )
+    )
 
 
 if __name__ == "__main__":

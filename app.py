@@ -52,25 +52,25 @@ def handle_message(event):
             event.reply_token,
             location_message
         )
-        return
 
-    if msg == 'Confirm template':
-        confirm_template_message = TemplateSendMessage(
-            alt_text='Confirm template',
-            template=ConfirmTemplate(
-                text='Are you sure?',
-                actions=[
-                    PostbackAction(
-                        label='postback',
-                        text='postback text',
-                        data='action=buy&itemid=1'
-                    ),
-                    MessageAction(
-                        label='message',
-                        text='message text'
-                    )
-                ]
-            )
+    elif msg == '確認':
+        Confirm_template = TemplateSendMessage(
+        alt_text='目錄 template',
+        template=ConfirmTemplate(
+            title='這是ConfirmTemplate',
+            text='這就是ConfirmTemplate,用於兩種按鈕選擇',
+            actions=[                              
+                PostbackTemplateAction(
+                    label='Y',
+                    text='Y',
+                    data='action=buy&itemid=1'
+                ),
+                MessageTemplateAction(
+                    label='N',
+                    text='N'
+                )
+            ]
+        )
         )
 
         line_bot_api.reply_message(
@@ -78,7 +78,7 @@ def handle_message(event):
             confirm_template_message
         )
 
-    elif msg == '貼圖':
+    else:
         sticker_message = StickerSendMessage(
             package_id='1',
             sticker_id='1'

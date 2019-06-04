@@ -54,40 +54,40 @@ def handle_message(event):
         )
         return
 
-        if msg == 'Confirm template':
-            confirm_template_message = TemplateSendMessage(
-                alt_text='Confirm template',
-                template=ConfirmTemplate(
-                    text='Are you sure?',
-                    actions=[
-                        PostbackAction(
-                            label='postback',
-                            text='postback text',
-                            data='action=buy&itemid=1'
-                        ),
-                        MessageAction(
-                            label='message',
-                            text='message text'
-                        )
-                    ]
-                )
+    if msg == 'Confirm template':
+        confirm_template_message = TemplateSendMessage(
+            alt_text='Confirm template',
+            template=ConfirmTemplate(
+                text='Are you sure?',
+                actions=[
+                    PostbackAction(
+                        label='postback',
+                        text='postback text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageAction(
+                        label='message',
+                        text='message text'
+                    )
+                ]
             )
+        )
 
-            line_bot_api.reply_message(
-                event.reply_token,
-                confirm_template_message
-            )
+        line_bot_api.reply_message(
+            event.reply_token,
+            confirm_template_message
+        )
 
-        elif msg == '貼圖':
-            sticker_message = StickerSendMessage(
-                package_id='1',
-                sticker_id='1'
-            )
+    elif msg == '貼圖':
+        sticker_message = StickerSendMessage(
+            package_id='1',
+            sticker_id='1'
+        )
 
-            line_bot_api.reply_message(
-                event.reply_token,
-                sticker_message
-            )
+        line_bot_api.reply_message(
+            event.reply_token,
+            sticker_message
+        )
 
 
 

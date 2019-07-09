@@ -79,29 +79,53 @@ def handle_message(event):
         )
 
     elif msg == '商品目錄':
-        image_carousel_template_message = TemplateSendMessage(
-        alt_text='ImageCarousel template',
-        template=ImageCarouselTemplate(
+        carousel_template_message = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
             columns=[
-                ImageCarouselColumn(
-                    image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
-                    action=PostbackAction(
-                        label='postback1',
-                        display_text='postback text1',
-                        data='action=buy&itemid=1'
-                    )
+                CarouselColumn(
+                    thumbnail_image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+                    title='this is menu1',
+                    text='description1',
+                    actions=[
+                        PostbackAction(
+                            label='postback1',
+                            display_text='postback text1',
+                            data='action=buy&itemid=1'
+                        ),
+                        MessageAction(
+                            label='message1',
+                            text='message text1'
+                        ),
+                        URIAction(
+                            label='uri1',
+                            uri='http://example.com/1'
+                        )
+                    ]
                 ),
-                ImageCarouselColumn(
-                    image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png',
-                    action=PostbackAction(
-                        label='postback2',
-                        display_text='postback text2',
-                        data='action=buy&itemid=2'
-                    )
+                CarouselColumn(
+                    thumbnail_image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+                    title='this is menu2',
+                    text='description2',
+                    actions=[
+                        PostbackAction(
+                            label='postback2',
+                            display_text='postback text2',
+                            data='action=buy&itemid=2'
+                        ),
+                        MessageAction(
+                            label='message2',
+                            text='message text2'
+                        ),
+                        URIAction(
+                            label='uri2',
+                            uri='http://example.com/2'
+                        )
+                    ]
                 )
             ]
         )
-        )
+    )
 
         line_bot_api.reply_message(
             event.reply_token,

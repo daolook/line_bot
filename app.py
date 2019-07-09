@@ -51,6 +51,8 @@ def handle_message(event):
             location_message
         )
 
+    
+
     elif msg == '確認':
         Confirm_template = TemplateSendMessage(
         alt_text='目錄 template',
@@ -74,6 +76,36 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             Confirm_template
+        )
+
+    elif msg == '商品目錄':
+        image_carousel_template_message = TemplateSendMessage(
+        alt_text='ImageCarousel template',
+        template=ImageCarouselTemplate(
+            columns=[
+                ImageCarouselColumn(
+                    image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+                    action=PostbackAction(
+                        label='postback1',
+                        display_text='postback text1',
+                        data='action=buy&itemid=1'
+                    )
+                ),
+                ImageCarouselColumn(
+                    image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png',
+                    action=PostbackAction(
+                        label='postback2',
+                        display_text='postback text2',
+                        data='action=buy&itemid=2'
+                    )
+                )
+            ]
+        )
+        )
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            image_carousel_template_message
         )
 
     else:
